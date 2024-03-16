@@ -1,5 +1,17 @@
 package com.example.demo.student
 
+import jakarta.persistence.*
 import java.time.LocalDate
 
-data class Student(val id: Long, var name: String, var email: String, var dateOfBirth: LocalDate, var age: Int)
+@Entity
+@Table
+data class Student(
+        @Id
+        @SequenceGenerator(name = "student_sequence", sequenceName = "student_sequence", allocationSize = 1)
+        @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "student_sequence")
+        val id: Long,
+        var name: String,
+        var email: String,
+        var dateOfBirth: LocalDate,
+        var age: Int
+)
