@@ -2,4 +2,4 @@ package com.example.demo.student
 
 import java.time.LocalDate
 
-data class Student(var id: Long, val name: String, val email: String, val dateOfBirth: LocalDate, val age: Int)
+data class Student(val id: Long, var name: String, var email: String, var dateOfBirth: LocalDate, var age: Int)
