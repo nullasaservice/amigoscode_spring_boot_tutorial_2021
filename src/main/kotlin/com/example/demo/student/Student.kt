@@ -13,12 +13,14 @@ data class Student(
         var id: Long?,
         var name: String,
         var email: String,
-        var dateOfBirth: LocalDate,
-        @Transient
-        var age: Int?
+        var dateOfBirth: LocalDate?
 ) {
 
-        constructor(name: String, email: String, dateOfBirth: LocalDate): this(null, name, email, dateOfBirth, null)
+        constructor(name: String, email: String, dateOfBirth: LocalDate): this(null, name, email, dateOfBirth)
 
-        fun getAge() = Period.between(dateOfBirth, LocalDate.now()).years
+        fun getAge(): Int? {
+                if (dateOfBirth == null) return null
+
+                return Period.between(dateOfBirth, LocalDate.now()).years
+        }
 }
