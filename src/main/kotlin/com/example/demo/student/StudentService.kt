@@ -2,6 +2,7 @@ package com.example.demo.student
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
+import java.lang.IllegalStateException
 
 @Service
 class StudentService(
@@ -10,6 +11,10 @@ class StudentService(
 ) {
     fun getStudents() = studentRepository.findAll()
     fun addNewStudent(student: Student) {
-        println(student)
+        var studentByEmail = studentRepository.findStudentByEmail(student.email)
+
+        if (studentByEmail.isPresent) throw IllegalStateException("Email is already taken")
+
+        studentRepository.save(student)
     }
 }
