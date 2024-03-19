@@ -9,4 +9,7 @@ class StudentService(
     private val studentRepository: StudentRepository
 ) {
     fun getStudents() = studentRepository.findAll()
+    fun addNewStudent(student: Student) {
+        println(student)
+    }
 }
