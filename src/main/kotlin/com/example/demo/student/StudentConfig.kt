@@ -11,9 +11,9 @@ class StudentConfig {
     @Bean
     fun commandLineRunner(repository: StudentRepository): CommandLineRunner {
         return CommandLineRunner { args ->
-            var pepe = Student("Pepe", "pepe@example.com", LocalDate.of(2000, Month.JANUARY, 5), 24)
+            var pepe = Student("Pepe", "pepe@example.com", LocalDate.of(2000, Month.JANUARY, 5))
 
-            var manolo = Student("Manolo", "manolo@example.com", LocalDate.of(2001, Month.MARCH, 7), 23)
+            var manolo = Student("Manolo", "manolo@example.com", LocalDate.of(2001, Month.MARCH, 7))
 
             repository.saveAll(listOf(pepe, manolo))
         }

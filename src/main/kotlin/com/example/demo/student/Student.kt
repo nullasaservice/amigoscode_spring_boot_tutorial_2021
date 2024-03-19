@@ -2,6 +2,7 @@ package com.example.demo.student
 
 import jakarta.persistence.*
 import java.time.LocalDate
+import java.time.Period
 
 @Entity
 @Table
@@ -13,7 +14,11 @@ data class Student(
         var name: String,
         var email: String,
         var dateOfBirth: LocalDate,
-        var age: Int
+        @Transient
+        var age: Int?
 ) {
-        constructor(name: String, email: String, dateOfBirth: LocalDate, age: Int): this(null, name, email, dateOfBirth, age)
+
+        constructor(name: String, email: String, dateOfBirth: LocalDate): this(null, name, email, dateOfBirth, null)
+
+        fun getAge() = Period.between(dateOfBirth, LocalDate.now()).years
 }
